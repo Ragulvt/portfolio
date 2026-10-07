@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ragul VT | Software Engineer • AI & Data Science</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              cyan: '#06b6d4',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Glow & Scrollbar effects */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0b0f19; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    .neon-border {
+      box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+    }
+    .neon-text {
+      text-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="canvas-bg" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Sticky Glass Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#0b0f19]/80 border-b border-slate-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          R
+        </div>
+        <div>
+          <span class="text-lg font-bold text-white tracking-tight group-hover:text-brand-400 transition-colors">Ragul VT</span>
+          <span class="block text-xs font-mono text-cyan-400">AI • Data Science • SWE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="text-slate-400 hover:text-white transition-colors">About</a>
+        <a href="#experience" class="text-slate-400 hover:text-white transition-colors">Experience</a>
+        <a href="#projects" class="text-slate-400 hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="text-slate-400 hover:text-white transition-colors">Skills</a>
+        <a href="#terminal" class="text-slate-400 hover:text-white transition-colors font-mono">Terminal_</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-brand-600 text-white font-medium border border-slate-700 hover:border-brand-500 transition-all">Get in Touch</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-slate-400 hover:text-white p-2">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden bg-[#0e1626] border-b border-slate-800 px-6 py-4 space-y-3 font-medium">
+      <a href="#about" class="block text-slate-300 py-1">About</a>
+      <a href="#experience" class="block text-slate-300 py-1">Experience</a>
+      <a href="#projects" class="block text-slate-300 py-1">Projects</a>
+      <a href="#skills" class="block text-slate-300 py-1">Skills</a>
+      <a href="#terminal" class="block font-mono text-cyan-400 py-1">Terminal_</a>
+      <a href="#contact" class="block text-brand-400 font-semibold py-1">Contact Me</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="relative z-10 pt-28 space-y-28">
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-6 pt-12 md:pt-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for Software Engineering & AI / Data Roles
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            Hi, I'm <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-indigo-300 to-cyan-400">Ragul VT</span>
+          </h1>
+
+          <div class="text-xl sm:text-2xl font-mono text-slate-400 flex items-center gap-2 min-h-[36px]">
+            <span>Building</span>
+            <span id="typewriter" class="text-cyan-400 font-semibold border-b-2 border-cyan-400 pb-0.5"></span>
+          </div>
+
+          <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl">
+            Computer Science engineer specialized in building production-grade Machine Learning pipelines, semantic ontology architectures (Sentence-BERT & RDFLib), and high-performance backend systems. Passionate about solving real-world enterprise data challenges.
+          </p>
+
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-600 text-white font-semibold hover:shadow-lg hover:shadow-brand-500/25 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-code"></i> Explore Projects
+            </a>
+            <a href="mailto:rt4843@srmist.edu.in" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-envelope"></i> Contact Directly
+            </a>
+          </div>
+
+          <!-- Social Badges -->
+          <div class="flex items-center gap-4 pt-4 text-slate-400">
+            <span class="text-xs uppercase font-mono tracking-widest text-slate-500">Connect:</span>
+            <a href="https://linkedin.com/in/ragul-vt" target="_blank" class="w-10 h-10 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-center hover:text-brand-400 hover:border-brand-500 transition-all">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Ragulvt" target="_blank" class="w-10 h-10 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500 transition-all">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:rt4843@srmist.edu.in" class="w-10 h-10 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-center hover:text-emerald-400 hover:border-emerald-500 transition-all">
+              <i class="fa-solid fa-paper-plane"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero: Clean Profile Showcase -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group">
+            <!-- Neon Ambient Glow -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-brand-500 via-cyan-500 to-emerald-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-500"></div>
+
+            <div class="relative rounded-3xl bg-slate-900 p-3 border border-slate-800 shadow-2xl">
+              <div class="relative overflow-hidden rounded-2xl w-64 h-80 sm:w-72 sm:h-96 bg-slate-800">
+                <!-- Profile Image -->
+                <img 
+                  id="profileImg"
+                  src="profile.jpeg" 
+                  alt="Ragul VT" 
+                  class="w-full h-full object-cover object-top filter brightness-[1.02] contrast-[1.03] transition duration-500 group-hover:scale-105"
+                />
+                
+                <!-- Bottom Glass Name Plate -->
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 text-center">
+                  <p class="font-bold text-white text-base">Ragul VT</p>
+                  <p class="text-xs font-mono text-cyan-400">B.Tech CSE • SRM Institute</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- METRICS & KEY HIGHLIGHTS -->
+    <section class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur">
+          <div class="text-3xl font-extrabold text-white font-mono">7.99<span class="text-brand-400 text-lg">/10</span></div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">SRMIST CGPA</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">97%+</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">SVM Classifier Accuracy</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur">
+          <div class="text-3xl font-extrabold text-indigo-400 font-mono">5+</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">Industry Certifications</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur">
+          <div class="text-3xl font-extrabold text-emerald-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">End-to-End Pipeline Delivery</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE TERMINAL (CLI AGENT) -->
+    <section id="terminal" class="max-w-4xl mx-auto px-6">
+      <div class="rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl overflow-hidden">
+        <!-- Terminal Header -->
+        <div class="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+            <span class="text-xs font-mono text-slate-400 ml-2">ragul-vt@portfolio-cli: ~</span>
+          </div>
+          <span class="text-xs font-mono text-slate-500">Type 'help' for available commands</span>
+        </div>
+
+        <!-- Terminal Output Screen -->
+        <div id="terminalScreen" class="p-6 font-mono text-sm min-h-[260px] max-h-[340px] overflow-y-auto space-y-2">
+          <p class="text-slate-400">Ragul VT CLI Terminal [v1.0.4]</p>
+          <p class="text-slate-500">Initialized modules: ML, Ontologies, Backend APIs, NoSQL.</p>
+          <p class="text-cyan-400">Type <span class="text-white font-bold">'help'</span>, <span class="text-white font-bold">'about'</span>, <span class="text-white font-bold">'skills'</span>, <span class="text-white font-bold">'projects'</span>, or <span class="text-white font-bold">'contact'</span>.</p>
+        </div>
+
+        <!-- Terminal Input Bar -->
+        <form id="terminalForm" class="bg-slate-900/70 px-6 py-3 border-t border-slate-800 flex items-center gap-2">
+          <span class="font-mono text-emerald-400 font-bold">$</span>
+          <input 
+            type="text" 
+            id="terminalInput" 
+            placeholder="Type a command (e.g., skills, projects, hire)..."
+            autocomplete="off"
+            class="flex-1 bg-transparent text-white font-mono text-sm focus:outline-none placeholder-slate-600"
+          >
+        </form>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS MATRIX -->
+    <section id="projects" class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold">Featured Work</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Engineering & AI Showcase</h2>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="inline-flex bg-slate-900 border border-slate-800 rounded-xl p-1 font-mono text-xs">
+          <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-lg text-white bg-brand-600 transition-all">All</button>
+          <button onclick="filterProjects('ai-ml')" class="filter-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all">AI & Ontologies</button>
+          <button onclick="filterProjects('nlp')" class="filter-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all">NLP & Vision</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Project 1 -->
+        <div class="project-card group bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-brand-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between" data-category="ai-ml">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3">
+              <span class="text-brand-400">Enterprise Data / Ontologies</span>
+              <span>2024 - 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+              RDF Schema Extraction in NoSQL via Sentence-BERT
+            </h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+              Designed a framework to extract and align RDF schemas from heterogeneous NoSQL databases (MongoDB, Cassandra, Neo4j), addressing enterprise data governance and interoperability challenges. Leveraged Sentence-BERT embeddings with cosine similarity for automated schema alignment.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-5">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-cyan-300 font-mono text-xs">Sentence-BERT</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">RDFLib</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">MongoDB</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">Cassandra</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">FastAPI</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-slate-800/80 mt-6 flex items-center justify-between text-sm">
+            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check text-[10px]"></i> Turtle & JSON-LD
+            </span>
+            <a href="https://github.com/Ragulvt" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1 font-mono text-xs">
+              GitHub Repo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card group bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between" data-category="nlp">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3">
+              <span class="text-cyan-400">Computer Vision & ML</span>
+              <span>2023</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+              Handwritten Digit Recognition using SVM
+            </h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+              Built an ML pipeline to classify handwritten digits from MNIST using Support Vector Machine (SVM), enabling automated financial document processing and form digitization. Applied grayscale conversion, thresholding, and normalization to achieve 97%+ accuracy.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-5">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-cyan-300 font-mono text-xs">SVM</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">OpenCV</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">Confusion Matrix</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-slate-800/80 mt-6 flex items-center justify-between text-sm">
+            <span class="text-xs font-mono text-cyan-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-chart-line text-[10px]"></i> 97%+ Accuracy
+            </span>
+            <a href="https://github.com/Ragulvt" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1 font-mono text-xs">
+              GitHub Repo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card group bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between" data-category="nlp">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3">
+              <span class="text-emerald-400">Natural Language Processing</span>
+              <span>2024</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+              NLP Fake News Detection Pipeline
+            </h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+              Developed an end-to-end NLP classification system for distinguishing fake from real news articles using TF-IDF vectorization and machine learning classifiers. Encompasses the complete lifecycle from ingestion and cleaning to precision, recall, and F1 validation.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-5">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-cyan-300 font-mono text-xs">TF-IDF</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">Scikit-Learn</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">NLP</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-xs">Feature Eng.</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-slate-800/80 mt-6 flex items-center justify-between text-sm">
+            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-halved text-[10px]"></i> Innovate Intern Project
+            </span>
+            <a href="https://github.com/Ragulvt" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1 font-mono text-xs">
+              GitHub Repo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Work & Internships -->
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center font-mono">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Experience</h2>
+          </div>
+
+          <div class="relative pl-6 border-l-2 border-slate-800 space-y-10">
+            <div class="relative group">
+              <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-brand-500 group-hover:scale-125 transition-transform"></div>
+              <div class="text-xs font-mono text-brand-400">2024</div>
+              <h3 class="text-lg font-bold text-white mt-1">Data Science & Analytics Intern</h3>
+              <p class="text-sm font-medium text-slate-400">Innovate Intern</p>
+              <ul class="text-sm text-slate-400 mt-3 space-y-2 list-disc list-inside leading-relaxed">
+                <li>Built an end-to-end NLP pipeline for fake vs. real news classification using TF-IDF vectorization and ML classifiers.</li>
+                <li>Conducted text preprocessing, feature engineering, and hyperparameter tuning to optimize precision, recall, and F1 scores.</li>
+                <li>Delivered a production-ready model with comprehensive stakeholder documentation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Education & Certifications</h2>
+          </div>
+
+          <div class="relative pl-6 border-l-2 border-slate-800 space-y-8">
+            <!-- College -->
+            <div class="relative group">
+              <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-cyan-500 group-hover:scale-125 transition-transform"></div>
+              <div class="text-xs font-mono text-cyan-400">Sep 2022 - Present</div>
+              <h3 class="text-lg font-bold text-white mt-1">B.Tech - Computer Science & Engineering</h3>
+              <p class="text-sm font-medium text-slate-400">SRM Institute of Science and Technology, KTR, Chennai</p>
+              <p class="text-xs font-mono text-emerald-400 mt-1">CGPA: 7.99 / 10</p>
+            </div>
+
+            <!-- Schooling -->
+            <div class="relative group">
+              <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-slate-600"></div>
+              <div class="text-xs font-mono text-slate-400">2019 - 2022</div>
+              <h3 class="text-base font-bold text-white mt-1">CBSE Class X & XII</h3>
+              <p class="text-sm font-medium text-slate-400">VIDYAPEETAM, Vellore</p>
+              <p class="text-xs font-mono text-slate-400 mt-0.5">Class XII: 76.8% | Class X: 82.8%</p>
+            </div>
+
+            <!-- Certifications Pills -->
+            <div class="pt-2">
+              <h4 class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">Industry Credentials</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono flex items-center gap-1.5">
+                  <i class="fa-brands fa-aws text-yellow-500"></i> AWS Machine Learning Foundations
+                </span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-code text-brand-400"></i> Programming in Java (NPTEL)
+                </span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-database text-blue-400"></i> Databases and SQL (IBM)
+                </span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-magnifying-glass-chart text-cyan-400"></i> Exploratory Data Analysis
+                </span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-shield-virus text-emerald-400"></i> Fortinet Associate in Cybersecurity
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS MATRIX -->
+    <section id="skills" class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold">Proficiencies</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Technical Stack & Tooling</h2>
+        <p class="text-slate-400 text-sm mt-3">From algorithmic modeling and semantic ontologies to backend web engineering and cloud deployments.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Programming -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-500/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-code text-lg"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-3">Languages</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Java</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">C</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">SQL</span>
+          </div>
+        </div>
+
+        <!-- AI & ML Libraries -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-brain text-lg"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-3">AI / ML & NLP</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">TensorFlow</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Scikit-learn</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Sentence-BERT</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">NumPy</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Pandas</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">RDFLib</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-database text-lg"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-3">Databases & Data</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">MySQL</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">MongoDB</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Cassandra</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">RDF/OWL</span>
+          </div>
+        </div>
+
+        <!-- Cloud & Frameworks -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-server text-lg"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-3">Cloud & Systems</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">FastAPI</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">REST APIs</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">AWS</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">Streamlit</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300">VS Code</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="max-w-4xl mx-auto px-6 pb-20">
+      <div class="rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12 text-center relative overflow-hidden">
+        
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Let's Connect</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Ready to Build Something Impactful?</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-xl mx-auto leading-relaxed">
+          I am actively exploring software engineering and AI/Data Science opportunities. Feel free to reach out directly via email or LinkedIn.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <a href="mailto:rt4843@srmist.edu.in" class="px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold transition-all flex items-center gap-2 shadow-lg shadow-brand-500/20">
+            <i class="fa-solid fa-envelope"></i> rt4843@srmist.edu.in
+          </a>
+          <button onclick="navigator.clipboard.writeText('rt4843@srmist.edu.in'); alert('Email address copied to clipboard!');" class="px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-sm font-mono flex items-center gap-2 transition-all">
+            <i class="fa-regular fa-copy"></i> Copy Email
+          </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-8 mt-10 text-slate-400">
+          <a href="https://linkedin.com/in/ragul-vt" target="_blank" class="hover:text-cyan-400 flex items-center gap-2 text-sm font-medium transition-colors">
+            <i class="fa-brands fa-linkedin text-lg"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Ragulvt" target="_blank" class="hover:text-brand-400 flex items-center gap-2 text-sm font-medium transition-colors">
+            <i class="fa-brands fa-github text-lg"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs font-mono text-slate-500 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Ragul VT. Engineered with clean architecture & modern web standards.</p>
+      <div class="flex items-center gap-4">
+        <span>Madurai / Chennai, India</span>
+        <span>•</span>
+        <a href="#" class="text-slate-400 hover:text-white">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: PARTICLE CANVAS, TYPEWRITER & TERMINAL LOGIC -->
+  <script>
+    // 1. Interactive Particle Network Canvas
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.25)';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.12 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 2. Typewriter Effect
+    const words = [
+      "Machine Learning Pipelines",
+      "NoSQL Semantic Ontologies",
+      "Scalable REST & FastAPI Services",
+      "Data Governance Architectures"
+    ];
+    let i = 0, timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('typewriter').innerHTML += word.shift();
+        } else {
+          setTimeout(deletingEffect, 2000);
+          return false;
+        }
+        timer = setTimeout(loopTyping, 75);
+      };
+      loopTyping();
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('typewriter').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          }
+          setTimeout(typingEffect, 400);
+          return false;
+        }
+        timer = setTimeout(loopDeleting, 40);
+      };
+      loopDeleting();
+    }
+    typingEffect();
+
+    // 3. Project Filter Logic
+    function filterProjects(cat) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => {
+        b.classList.remove('bg-brand-600', 'text-white');
+        b.classList.add('text-slate-400');
+      });
+      event.currentTarget.classList.add('bg-brand-600', 'text-white');
+      event.currentTarget.classList.remove('text-slate-400');
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Interactive CLI Terminal
+    const terminalScreen = document.getElementById('terminalScreen');
+    const terminalForm = document.getElementById('terminalForm');
+    const terminalInput = document.getElementById('terminalInput');
+
+    const commands = {
+      help: "Available commands: 'about', 'skills', 'projects', 'education', 'contact', 'clear'",
+      about: "Ragul VT: Computer Science Engineer (B.Tech at SRMIST) focused on Machine Learning, Semantic Web (Sentence-BERT, RDFLib), and Software Engineering.",
+      skills: "Languages: Python, Java, C, SQL | ML: TensorFlow, Scikit-learn, Sentence-BERT | Databases: MongoDB, Cassandra, MySQL | Backend: FastAPI, REST APIs, AWS",
+      projects: "1. RDF Schema Extraction in NoSQL via Sentence-BERT\n2. Handwritten Digit Recognition (SVM, 97%+ acc)\n3. NLP Fake News Detection (Innovate Intern)",
+      education: "B.Tech in Computer Science & Eng. @ SRM Institute of Science and Technology (CGPA: 7.99/10)",
+      contact: "Email: rt4843@srmist.edu.in | LinkedIn: linkedin.com/in/ragul-vt | GitHub: github.com/Ragulvt",
+      clear: "CLEAR"
+    };
+
+    terminalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const rawCmd = terminalInput.value.trim().toLowerCase();
+      if (!rawCmd) return;
+
+      const userLine = document.createElement('p');
+      userLine.innerHTML = `<span class="text-emerald-400 font-bold">$</span> <span class="text-white">${rawCmd}</span>`;
+      terminalScreen.appendChild(userLine);
+
+      if (rawCmd === 'clear') {
+        terminalScreen.innerHTML = '';
+      } else if (commands[rawCmd]) {
+        const responseLine = document.createElement('p');
+        responseLine.className = 'text-cyan-300 whitespace-pre-line';
+        responseLine.innerText = commands[rawCmd];
+        terminalScreen.appendChild(responseLine);
+      } else {
+        const errorLine = document.createElement('p');
+        errorLine.className = 'text-red-400';
+        errorLine.innerText = `Command not recognized: '${rawCmd}'. Type 'help' for valid commands.`;
+        terminalScreen.appendChild(errorLine);
+      }
+
+      terminalInput.value = '';
+      terminalScreen.scrollTop = terminalScreen.scrollHeight;
+    });
+
+    // 5. Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    mobileBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
